@@ -1,0 +1,103 @@
+{% load jalali_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .form-group {
+            padding-bottom: 20px;
+        }
+        /* Style for date picker container */
+        .ui-datepicker {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="{% url 'dashboard' %}" class="btn btn-primary" style="margin-bottom: 20px;">⬅ Back to Dashboard 🏠</a>
+    <h1>User List</h1>
+    <form method="get" class="form-inline">
+        <div class="form-group mr-3">
+            <label for="start_date">Start Date:</label>
+            <input type="text" class="form-control jalali_date" id="start_date" name="start_date" value="{{ start_date|default_if_none:'' }}">
+        </div>
+        <div class="form-group mr-3">
+            <label for="end_date">End Date:</label>
+            <input type="text" class="form-control jalali_date" id="end_date" name="end_date" value="{{ end_date|default_if_none:'' }}">
+        </div>
+        <div class="form-group mr-3">
+            <label for="search">Search:</label>
+            <input type="text" class="form-control" id="search" name="search" value="{{ search|default_if_none:'' }}">
+        </div>
+        <div class="form-group mr-3">
+            <label for="minimum_orders_in_date_range">Minimum Orders:</label>
+            <input type="number" class="form-control" id="minimum_orders_in_date_range" name="minimum_orders_in_date_range" value="{{ minimum_orders_in_date_range|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Filter</button>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Orders Count</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>🆔 {{ customer.id }}</td>
+            <td>🙋 {{ customer.name }}</td>
+            <td>☎ {{ customer.phone }}</td>
+            <td>🛒 {{ customer.orders_count }}</td>
+            <td><a href="{% url 'user_detail' customer.id %}">Go to detail ➡</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Initialize date picker -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+<script>
+    $('.jalali_date').datepicker();
+</script>
+</body>
+</html>

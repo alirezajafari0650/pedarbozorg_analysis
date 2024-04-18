@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            padding-top: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+        }
+        .card-body a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .card-body a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .funny-img {
+            display: block;
+            width: 50%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
+        .jafar-style {
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to the <span class="jafar-style">JAFAR</span> Dashboard! 🚀</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0TJh0Q2iLZEnRppvpHng1UuKBv09zx3p9YBbMxrBRyxN7Equ1TXhF2eRiJHNOC_KFB4A&usqp=CAU" class="funny-img" alt="Funny Image">
+    <div class="card">
+        <div class="card-header">Users List Page with Advanced Filters 🧑‍🤝‍🧑</div>
+        <div class="card-body">
+            <a href="{% url 'users_list' %}">Go to Users List 📋</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">Products List Page with Advanced Filters 🛍️</div>
+        <div class="card-body">
+            <a href="{% url 'products_list' %}">Go to Products List 📦</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">Statistics Page 📊</div>
+        <div class="card-body">
+            <a href="{% url 'statistics' %}">Go to Statistics Page 📈</a>
+        </div>
+    </div>
+</div>
+
+<!-- Optional: JavaScript to show/hide columns -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
