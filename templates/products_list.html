@@ -69,6 +69,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>#</th>
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
@@ -79,6 +80,7 @@
         <tbody>
         {% for product in products %}
         <tr>
+            <td>{{ forloop.counter }}</td>
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>

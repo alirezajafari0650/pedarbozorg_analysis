@@ -70,6 +70,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>#</th>
             <th>ID</th>
             <th>Name</th>
             <th>Phone</th>
@@ -80,6 +81,7 @@
         <tbody>
         {% for customer in customers %}
         <tr>
+            <td>{{ forloop.counter }}</td>
             <td>🆔 {{ customer.id }}</td>
             <td>🙋 {{ customer.name }}</td>
             <td>☎ {{ customer.phone }}</td>
